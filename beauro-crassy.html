@@ -474,9 +474,9 @@
                     <option value="drain">Clogged Drain</option>
                     <option value="road">Road Damage</option>
                     <option value="water">Water Leakage</option>
-                    <option value="tree">Aise hi</option>
-                    <option value="signal">Desh me maja nahi aa raha aaj kal</option>
-                    <option value="noise">Mera Vote Chori Hogaya</option>
+                    <option value="Aise hi">Aise hi</option>
+                    <option value="Desh me maja nahi aa raha aaj kal">Desh me maja nahi aa raha aaj kal</option>
+                    <option value="Mera Vote Chori Hogaya">Mera Vote Chori Hogaya</option>
                     <option value="other">Other</option>
                 </select>
                 <input type="text" id="customIssue" placeholder="Describe the issue..." class="hidden">
@@ -830,9 +830,31 @@
         }
 
         function downloadCertificate() {
-            // For now, just show a message
-            showStatus('Download feature coming soon! Screenshot for now 📸', 'success');
-        }
+            const cert = document.querySelector('.certificate');
+            if (!cert) return;
+
+            // Save old styles
+            const oldMaxHeight = cert.style.maxHeight;
+            const oldOverflow = cert.style.overflowY;
+
+            // Expand certificate fully
+            cert.style.maxHeight = 'none';
+            cert.style.overflowY = 'visible';
+
+            html2canvas(cert, { scale: 2, useCORS: true }).then(canvas => {
+             // Restore styles
+            cert.style.maxHeight = oldMaxHeight;
+            cert.style.overflowY = oldOverflow;
+
+            // Download as PNG
+            const link = document.createElement('a');
+            link.download = 'Beauro-crassy-Certificate.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+    });
+}
+
+
 
         function shareCertificate() {
             if (navigator.share) {
@@ -863,5 +885,7 @@
             }, 3000);
         }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 </body>
 </html>
