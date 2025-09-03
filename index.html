@@ -90,8 +90,9 @@
 
         video {
             width: 100%;
-            max-width: 400px;
+            max-width: 600px;
             border-radius: 10px;
+            height: 500px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             display: none;
         }
@@ -201,6 +202,10 @@
             opacity: 0.8;
         }
 
+        .govt-emblem img {
+            filter: contrast(200%) brightness(70%);
+        }
+
         .dept-info h1 {
             font-size: 1.8rem;
             margin: 5px 0;
@@ -306,6 +311,11 @@
             border-radius: 8px;
         }
 
+        .photo-section img {
+            width: 900px; 
+            height: 1000px;    
+        }
+
         .photo-section h4 {
             color: #1e3c72;
             margin-bottom: 15px;
@@ -313,7 +323,8 @@
         }
 
         .cert-photo {
-            max-width: 300px;
+            max-width: 700px;
+            max-height: 500px;
             width: 100%;
             border: 3px solid #1e3c72;
             border-radius: 5px;
@@ -340,7 +351,7 @@
             display: flex;
             justify-content: space-between;
             align-items: end;
-            margin: 30px 0;
+            margin: 80px 0;
             flex-wrap: wrap;
         }
 
@@ -458,7 +469,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="National-Emblem.png" alt="icon" width="30" height="40"> 
+            <img src="National-Emblem.png" alt="icon" width="40" height="50"> 
             <h1>Beauro-Crassy</h1>
             <p>Where civic complaints meet bureaucratic sass</p>
         </div>
@@ -518,6 +529,7 @@
     </div>
 
         <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
         <script src="script.js"></script>
 
 </body>

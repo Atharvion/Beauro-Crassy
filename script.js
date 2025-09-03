@@ -208,15 +208,15 @@
                 <div class="certificate-overlay" onclick="closeCertificate()">
                     <div class="certificate" onclick="event.stopPropagation()">
                         <div class="cert-header">
-                            <div class="govt-emblem"><img src="National-Emblem.png" alt="icon" width="30" height="40"></div>
+                            <div class="govt-emblem"><img src="National-Emblem.png" alt="icon" width="60" height="80"></div>
                             <div class="dept-info">
                                 <h1>MINISTRY OF CIVIC SASS</h1>
                                 <h2>Department of Bureaucratic Excellence</h2>
                                 <h3>Division of Official Complaint Processing</h3>
                                 <p class="govt-tagline">सत्यमेव जयते • Truth Alone Triumphs</p>
                             </div>
-                            <div class="govt-emblem">📋</div>
-                        </div>
+                            <div class="govt-emblem"><img src="digital-india.png" alt="Company logo" width="90" height="80"></div>
+                            </div>
 
                         <div class="cert-title">
                             <h2>OFFICIAL CIVIC COMPLAINT CERTIFICATE</h2>
@@ -310,30 +310,35 @@
             if (overlay) overlay.remove();
         }
 
-        function downloadCertificate() {
+        function downloadCertificateAsPDF() {
             const cert = document.querySelector('.certificate');
             if (!cert) return;
 
-            // Save old styles
-            const oldMaxHeight = cert.style.maxHeight;
-            const oldOverflow = cert.style.overflowY;
+            // Open certificate in a new popup window
+            const win = window.open('', '_blank');
+            win.document.write(`
+            <html>
+                <head>
+                <title>Certificate</title>
+                    <style>
+                    ${document.querySelector('style').innerHTML} /* copy your CSS */
+                    </style>
+                </head>
+                <body>
+                ${cert.outerHTML}
+                </body>
+            </html>
+            `);
+        win.document.close();
 
-            // Expand certificate fully
-            cert.style.maxHeight = 'none';
-            cert.style.overflowY = 'visible';
+            // Wait for styles to load, then trigger print dialog
+            win.onload = () => {
+            win.print(); // user can "Save as PDF"
+            win.close();
+            };
+        }
 
-            html2canvas(cert, { scale: 2, useCORS: true }).then(canvas => {
-             // Restore styles
-            cert.style.maxHeight = oldMaxHeight;
-            cert.style.overflowY = oldOverflow;
 
-            // Download as PNG
-            const link = document.createElement('a');
-            link.download = 'Beauro-crassy-Certificate.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-    });
-}
 
 
 
