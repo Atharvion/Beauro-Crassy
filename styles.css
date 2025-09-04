@@ -1,0 +1,461 @@
+/* Certificate Styles - A4 Optimized */
+@page {
+    size: A4;
+    margin: 0.5in;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    background: white;
+    color: #333;
+    line-height: 1.4;
+}
+
+.certificate-page {
+    width: 210mm;
+    min-height: 297mm;
+    max-width: 210mm;
+    margin: 0 auto;
+    background: white;
+    padding: 15mm;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Header Section */
+.cert-header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.govt-emblem img {
+    filter: brightness(0) invert(1);
+}
+
+.dept-info h1 {
+    font-size: 18px;
+    margin: 2px 0;
+    font-weight: bold;
+}
+
+.dept-info h2 {
+    font-size: 14px;
+    margin: 1px 0;
+    font-weight: normal;
+}
+
+.dept-info h3 {
+    font-size: 12px;
+    margin: 1px 0;
+    font-weight: normal;
+    opacity: 0.9;
+}
+
+.govt-tagline {
+    font-size: 10px;
+    margin-top: 4px;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+/* Title Section */
+.cert-title {
+    text-align: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border-bottom: 2px solid #1e3c72;
+    margin-bottom: 15px;
+}
+
+.cert-title h2 {
+    font-size: 20px;
+    color: #1e3c72;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+}
+
+.cert-subtitle {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Body Section */
+.cert-body {
+    padding: 0;
+}
+
+/* Official Stamps */
+.official-stamps {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.stamp {
+    background: #dc3545;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 3px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 9px;
+    transform: rotate(-5deg);
+    margin: 3px;
+    border: 1px dashed white;
+}
+
+.stamp.processed {
+    background: #28a745;
+    transform: rotate(3deg);
+}
+
+.stamp.verified {
+    background: #007bff;
+    transform: rotate(-2deg);
+}
+
+/* Details Table */
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 11px;
+}
+
+.details-table td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.details-table td:first-child {
+    width: 35%;
+    color: #666;
+}
+
+/* Photo Section */
+.photo-section {
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.photo-section h4 {
+    color: #1e3c72;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.cert-photo {
+    max-width: 120mm;
+    max-height: 60mm;
+    width: auto;
+    height: auto;
+    border: 2px solid #1e3c72;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    object-fit: contain;
+}
+
+.photo-caption {
+    font-size: 10px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Certification Text */
+.certification-text {
+    margin: 15px 0;
+    line-height: 1.5;
+    text-align: justify;
+    font-size: 11px;
+}
+
+.certification-text p {
+    margin-bottom: 8px;
+}
+
+/* Signatures Section */
+.signatures {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.signature-block {
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+    margin: 5px;
+}
+
+.signature-line {
+    height: 1px;
+    background: #333;
+    margin-bottom: 5px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signature-block p {
+    font-size: 10px;
+    color: #666;
+    line-height: 1.2;
+}
+
+.official-seal {
+    flex: 0 0 auto;
+    margin: 0 15px;
+}
+
+.seal-circle {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #1e3c72;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: bold;
+    color: #1e3c72;
+    text-align: center;
+    line-height: 1;
+}
+
+/* Politicians Photo */
+.politicians-section {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.politicians-photo {
+    width: 100%;
+    max-height: 40mm;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Footer */
+.footer-info {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    font-size: 9px;
+    color: #666;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.footer-info p {
+    margin-bottom: 5px;
+}
+
+.qr-placeholder {
+    font-size: 11px;
+    color: #333 !important;
+}
+
+/* Print Styles */
+@media print {
+    .certificate-page {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 15mm;
+        page-break-after: avoid;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    .cert-photo {
+        max-height: 50mm;
+    }
+    
+    .politicians-photo {
+        max-height: 35mm;
+    }
+}
+
+/* Screen View */
+@media screen {
+    body {
+        background: #f5f5f5;
+        padding: 20px;
+    }
+    
+    .certificate-page {
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        border: 1px solid #ddd;
+    }
+}
+
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .step {
+            margin-bottom: 30px;
+        }
+
+        .step h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .camera-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        video {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            height: 500px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        canvas {
+            display: none;
+        }
+
+        .photo-preview {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin: 10px 0;
+        }
+
+        .location-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin: 10px 0;
+            transition: border-color 0.3s ease;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
