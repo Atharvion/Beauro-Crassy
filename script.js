@@ -232,7 +232,7 @@ function createCertificateHTML(issue, complaintId, fileNumber, refNumber, dateSt
         /* Certificate Styles - A4 Optimized */
         @page {
             size: A4;
-            margin: 0.5in;
+            margin: 0.2in;
         }
 
         * {
@@ -254,7 +254,7 @@ function createCertificateHTML(issue, complaintId, fileNumber, refNumber, dateSt
             max-width: 210mm;
             margin: 0 auto;
             background: white;
-            padding: 15mm;
+            padding: 5mm;
             box-sizing: border-box;
             position: relative;
         }
@@ -268,8 +268,8 @@ function createCertificateHTML(issue, complaintId, fileNumber, refNumber, dateSt
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-radius: 5px;
-            margin-bottom: 15px;
+            border-radius: 3px;
+            margin-bottom: 10px;
         }
 
         .govt-emblem img {
@@ -381,8 +381,8 @@ function createCertificateHTML(issue, complaintId, fileNumber, refNumber, dateSt
         /* Photo Section */
         .photo-section {
             text-align: center;
-            margin: 15px 0;
-            padding: 10px;
+            margin: 10px 0;
+            padding: 8px;
             background: #f8f9fa;
             border-radius: 5px;
         }
@@ -412,7 +412,7 @@ function createCertificateHTML(issue, complaintId, fileNumber, refNumber, dateSt
 
         /* Certification Text */
         .certification-text {
-            margin: 15px 0;
+            margin: 10px 0;
             line-height: 1.5;
             text-align: justify;
             font-size: 11px;
@@ -476,14 +476,14 @@ function createCertificateHTML(issue, complaintId, fileNumber, refNumber, dateSt
         /* Politicians Photo */
         .politicians-section {
             text-align: center;
-            margin: 15px 0;
+            margin: 8px 0;
         }
 
         .politicians-photo {
-            width: 100%;
+            width: 70%;
             max-height: 40mm;
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 2px;
         }
 
         /* Footer */
@@ -493,16 +493,11 @@ function createCertificateHTML(issue, complaintId, fileNumber, refNumber, dateSt
             font-size: 9px;
             color: #666;
             text-align: center;
-            margin-top: 15px;
+            margin-top: 8px;
         }
 
         .footer-info p {
             margin-bottom: 5px;
-        }
-
-        .qr-placeholder {
-            font-size: 11px;
-            color: #333 !important;
         }
 
         /* Print Styles */
@@ -511,7 +506,7 @@ function createCertificateHTML(issue, complaintId, fileNumber, refNumber, dateSt
                 width: 210mm;
                 height: 297mm;
                 margin: 0;
-                padding: 15mm;
+                padding: 8mm;
                 page-break-after: avoid;
             }
             
@@ -536,11 +531,11 @@ function createCertificateHTML(issue, complaintId, fileNumber, refNumber, dateSt
         @media screen {
             body {
                 background: #f5f5f5;
-                padding: 20px;
+                padding: 10px;
             }
             
             .certificate-page {
-                box-shadow: 0 0 20px rgba(0,0,0,0.1);
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
                 border: 1px solid #ddd;
             }
         }
@@ -630,7 +625,6 @@ function createCertificateHTML(issue, complaintId, fileNumber, refNumber, dateSt
             <div class="footer-info">
                 <p><strong>Important Notice:</strong> This certificate is generated automatically by Beauro-crassy v2.0. 
                 No actual government officials were consulted in the making of this document.</p>
-                <p class="qr-placeholder">📱 QR Code: BC${complaintId.slice(-6)}</p>
             </div>
         </div>
     </div>
@@ -734,23 +728,36 @@ async function generatePDF(certWindow, complaintId) {
         const buttons = certWindow.document.querySelectorAll('button');
         buttons.forEach(btn => btn.style.display = 'none');
         
-        // Generate PDF
+        // Generate PDF with compact settings
         const certificateElement = certWindow.document.getElementById('certificateContent');
         const canvas = await certWindow.html2canvas(certificateElement, {
-            scale: 2,
+            scale: 1.5,
             useCORS: true,
             allowTaint: true,
             backgroundColor: '#ffffff',
-            width: 794, // A4 width in pixels at 96 DPI
-            height: 1123 // A4 height in pixels at 96 DPI
+            width: 794,
+            height: 1123,
+            scrollX: 0,
+            scrollY: 0,
+            windowWidth: 794,
+            windowHeight: 1123,
+            logging: false
         });
         
-        const imgData = canvas.toDataURL('image/png');
+        const imgData = canvas.toDataURL('image/png', 0.95);
         const { jsPDF } = certWindow.jspdf;
         const pdf = new jsPDF('p', 'mm', 'a4');
         
-        // Add image to fit A4 exactly
-        pdf.addImage(imgData, 'PNG', 0, 0, 210, 297);
+        // Use very minimal margins for maximum content
+        const pageWidth = 210;
+        const pageHeight = 297;
+        const margin = 1;
+        
+        const imgWidth = pageWidth - (2 * margin);
+        const imgHeight = pageHeight - (2 * margin);
+        
+        // Add image with minimal margins
+        pdf.addImage(imgData, 'PNG', margin, margin, imgWidth, imgHeight);
         
         // Download PDF
         const filename = `Beauro-Crassy-Certificate-${complaintId}.pdf`;
